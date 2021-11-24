@@ -1,21 +1,27 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("location:../");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Liên Hệ</title>
+    <title>Purple Buzz - Contact Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="../../assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="../../assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../../assets/css/custom.css">
 <!--
     
 TemplateMo 561 Purple Buzz
@@ -26,10 +32,52 @@ https://templatemo.com/tm-561-purple-buzz
 </head>
 
 <body>
+    <?php
+        $mysqli = new mysqli("localhost","root","","seo-website");
+        if ($mysqli -> connect_error) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+        }
+        $username = $_SESSION['user'];
+        $result = $mysqli->query("SELECT * FROM user WHERE username='$username'");
+        $row = $result->fetch_assoc();
+        if (isset($_POST['change_pass'])) {
+            $password = $_POST['password'];
+            if (md5($password) === $row['password']) {
+                if (md5($password) === $_POST['newpassword']) {
+                    echo "<script> alert('Mật khẩu mới trùng mật khẩu cũ')</script>";
+                }
+                else {
+                    if (strlen($_POST['newpassword'])<2 || strlen($_POST['newpassword'])>50) {
+                        echo "<script> alert('Chỉ chấp nhận mật khẩu 2-50 kí tự!')</script>";
+                    }
+                    else {
+                        if ($_POST['newpassword'] === $_POST['renewpassword']) {
+                            $newpass = md5($_POST['newpassword']);
+                            if ($mysqli->query("UPDATE user SET password='$newpass' WHERE username='$username'")){
+                                echo "<script> alert('Đổi mật khẩu thành công')</script>";
+                                header("location:../");
+                            }
+                            else {
+                                echo "Error updating record: " . $mysqli->error;
+                            }
+                        }
+                        else {
+                            echo "<script> alert('Nhập lại mật khẩu mới không khớp')</script>";
+                        }
+                    }
+                }
+            }
+            else {
+                echo "<script> alert('Mật khẩu không đúng')</script>";
+            }
+        }
+    ?>
+
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="index.html">
+            <a class="navbar-brand h1" href="../../">
                 <i class='bx bx-buildings bx-sm text-dark'></i>
                 <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span>
             </a>
@@ -41,158 +89,93 @@ https://templatemo.com/tm-561-purple-buzz
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Trang chủ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Giới thiệu</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.php">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="news.html">Tin tức</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.php">Work</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.html">Sản phẩm</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.php">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Bảng giá</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.php">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Liên hệ</a>
-                        </li>
-                        
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
-                    <a class="nav-link" href="#"><i class='bx bx-sm bx-tada-hover text-primary bx-search'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+                    <?php
+                        if (isset($_SESSION['user'])) {
+                            if ($row['anh']!==NULL) {
+                                echo "<a class='nav-link' href='../'><img class='recent-work-img card-img' src='../../assets/img/user/",$row['anh'],"' alt='Card image' style='width: 25px; height:25px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;'></a>";
+                            }
+                            else {
+                                echo "<a class='nav-link' href='../'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                            }
+                        }
+                        else {
+                            echo "<a class='nav-link' href='./signin/'>Đăng nhập</a>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Close Header -->
 
-
-    <!-- Start Banner Hero -->
-    <section class="bg-light">
-        <div class="container py-4">
-            <div class="row align-items-center justify-content-between">
-                <div class="contact-header col-lg-4">
-                    <h1 class="h2 pb-3 text-primary">Liên Hệ</h1>
-                    <h3 class="h4 regular-400">Thành phố Hồ Chí Minh</h3>
-                    <p class="light-300">
-                        Đóng góp của bạn giúp chúng tôi trưởng thành hơn.
-                    </p>
-                </div>
-                <div class="contact-img col-lg-5 align-items-end col-md-4">
-                    <img src="./assets/img/banner-img-01.svg">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Hero -->
-
-
-    <!-- Start Contact -->
     <section class="container py-5">
 
-        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Cùng chúng tôi tạo nên các dịch vụ chất lượng hơn!</h1>
-        <!--<h2 class="col-12 col-xl-8 h4 text-left regular-400">Elit, sed do eiusmod tempor </h2>-->
-        <p class="col-12 col-xl-8 h6 text-left text-muted pb-5 light-300">
-           Mọi thắc mắc, phản hồi hoặc muốn được biết thêm thông tin về các dịch vụ thì hãy liên hệ với chúng tôi.
-        </p>
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Bạn sẽ đổi mật khẩu tại đây!</h1>
+        <h2 class="col-12 col-xl-8 h4 text-left regular-400">Chào mừng bạn!</h2>
 
         <div class="row pb-4">
-            <div class="col-lg-4">
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='display-6 bx bx-news'></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9  light-300">
-                        <li class="h5 mb-0">Thông Tin</li>
-                        <li class="text-muted">Mr. Thức</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="border py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='bx bx-laptop display-6' ></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9 light-300">
-                        <li class="h5 mb-0">Hệ Thống</li>
-                        <li class="text-muted">Mr. Đạt</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-                <div class="contact row mb-4">
-                    <div class="contact-icon col-lg-3 col-3">
-                        <div class="border py-3 mb-2 text-center border rounded text-secondary">
-                            <i class='bx bx-money display-6'></i>
-                        </div>
-                    </div>
-                    <ul class="contact-info list-unstyled col-lg-9 col-9 light-300">
-                        <li class="h5 mb-0">Sản Phẩm</li>
-                        <li class="text-muted">Mr. Mạnh</li>
-                        <li class="text-muted">010-020-0340</li>
-                    </ul>
-                </div>
-
-            </div>
+            
 
 
             <!-- Start Contact Form -->
             <div class="col-lg-8 ">
-                <form class="contact-form row" method="post" action="#" role="form">
+                <form class="contact-form row" method="post" action="" role="form">
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname" placeholder="Họ và Tên" required>
-                            <label for="floatingname light-300">Họ và Tên</label>
+                            <input type="text" class="form-control form-control-lg light-300" id="username" name="username" placeholder="Tên đăng nhập" value="<?=$row['username']?>"readonly>
+                            <label for="username light-300">Tên đăng nhập</label>
                         </div>
                     </div><!-- End Input Name -->
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail" placeholder="Email" required>
-                            <label for="floatingemail light-300">Email</label>
+                            <input type="email" class="form-control form-control-lg light-300" id="email" name="email" placeholder="Email" value="<?=$row['email']?>" readonly>
+                            <label for="email light-300">Email</label>
                         </div>
                     </div><!-- End Input Email -->
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingphone" name="inputphone" placeholder="Số điện thoại" required>
-                            <label for="floatingphone light-300">Số điện thoại</label>
-                        </div>
-                    </div><!-- End Input Phone -->
-
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="inputcompany" placeholder="Địa chỉ" required>
-                            <label for="floatingcompany light-300">Địa chỉ</label>
-                        </div>
-                    </div><!-- End Input Company Name -->
-
                     <div class="col-12">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingsubject" name="inputsubject" placeholder="Chủ đề">
-                            <label for="floatingsubject light-300">Chủ đề</label>
+                            <input type="password" class="form-control form-control-lg light-300" id="password" name="password" placeholder="Mật khẩu cũ" required>
+                            <label for="password light-300">Mật khẩu cũ</label>
                         </div>
                     </div><!-- End Input Subject -->
 
                     <div class="col-12">
-                        <div class="form-floating mb-3">
-                            <textarea class="form-control light-300" rows="8" placeholder="Tin nhắn" id="floatingtextarea" required></textarea>
-                            <label for="floatingtextarea light-300">Nội dung</label>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control form-control-lg light-300" id="newpassword" name="newpassword" placeholder="Mật khẩu mới" required>
+                            <label for="newpassword light-300">Mật khẩu mới</label>
                         </div>
-                    </div><!-- End Textarea Message -->
+                    </div><!-- End Input Subject -->
+
+                    <div class="col-12">
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control form-control-lg light-300" id="renewpassword" name="renewpassword" placeholder="Nhập lại mật khẩu mới" required>
+                            <label for="renewpassword light-300">Nhập lại mật khẩu mới</label>
+                        </div>
+                    </div><!-- End Input Subject -->
 
                     <div class="col-md-12 col-12 m-auto text-end">
-                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Gửi phản hồi</button>
+                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" name="change_pass" id="change_pass">Đổi mật khẩu</button>
                     </div>
 
                 </form>
@@ -211,7 +194,7 @@ https://templatemo.com/tm-561-purple-buzz
             <div class="row py-4">
 
                 <div class="col-lg-3 col-12 align-left">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <i class='bx bx-buildings bx-sm text-light'></i>
                         <span class="text-light h5">Purple</span> <span class="text-light h5 semi-bold-600">Buzz</span>
                     </a>
@@ -252,22 +235,19 @@ https://templatemo.com/tm-561-purple-buzz
                     <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
                         <ul class="list-unstyled text-light light-300">
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Trang chủ</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.php">Home</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">Giới thiệu</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.php">About Us</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="news.html">Tin tức</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.php">Work</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Sản phẩm</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.php">Price</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Bảng giá</a>
-                            </li>
-                            <li class="pb-2"> 
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Liên hệ</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.php">Contact</a>
                             </li>
                         </ul>
                 </div>
@@ -297,7 +277,7 @@ https://templatemo.com/tm-561-purple-buzz
                 </div>
 
                 <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Hỗ trợ</h2>
+                    <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
                     <ul class="list-unstyled text-light light-300">
                         <li class="pb-2">
                             <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
@@ -333,11 +313,11 @@ https://templatemo.com/tm-561-purple-buzz
 
 
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
+    <script src="../../assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
+    <script src="../../assets/js/custom.js"></script>
 
 </body>
 

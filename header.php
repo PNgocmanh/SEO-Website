@@ -1,7 +1,9 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Header</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
@@ -32,29 +34,49 @@
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.html">Trang chủ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="index.php">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.html">Giới thiệu</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="about.php">Giới thiệu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="news.html">Tin tức</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="news.php">Tin tức</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.html">Sản phẩm</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="work.php">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.html">Bảng giá</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.php">Bảng giá</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.html">Liên hệ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.php">Liên hệ</a>
                         </li>
                         
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class='bx bx-sm bx-tada-hover text-primary bx-search'></i></a>
-                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <?php
+                        if (isset($_SESSION['user'])) {
+                            $mysqli = new mysqli("localhost","root","","seo-website");
+                            if ($mysqli -> connect_error) {
+                                echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+                                exit();
+                            }
+                            $username = $_SESSION['user'];
+                            $result = $mysqli->query("SELECT * FROM user WHERE username='$username'");
+                            $row = $result->fetch_assoc();
+                            if ($row['anh']!==NULL) {
+                                echo "<a class='nav-link' href='./info/'><img class='recent-work-img card-img' src='./assets/img/user/".$row['anh']."' alt='Card image' style='width: 25px; height:25px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;'></a>";
+                            }
+                            else {
+                                echo "<a class='nav-link' href='./info'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                            }
+                        }
+                        else {
+                            echo "<a class='nav-link' href='./signin/'>Đăng nhập</a>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
