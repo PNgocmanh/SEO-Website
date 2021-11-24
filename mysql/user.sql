@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 03:34 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.30
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 24, 2021 lúc 07:25 PM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mydb`
+-- Cơ sở dữ liệu: `seo-website`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -39,7 +39,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`ID`, `username`, `password`, `ho_ten`, `email`, `anh`, `lien_he`, `quyen`) VALUES
@@ -48,27 +48,28 @@ INSERT INTO `user` (`ID`, `username`, `password`, `ho_ten`, `email`, `anh`, `lie
 (6, 'dat1234', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt ABC', 'dat01685170741@gmail.com', NULL, 'TP. Hồ Chí Minh', 1),
 (7, 'abcabc', 'e10adc3949ba59abbe56e057f20f883e', 'aaaaaa', 'dat1234@gmail.com', NULL, 'Vũng Tàu', 1),
 (16, 'dathuynhyl91', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt Huỳnh', 'dathuynhyl91@gmail.com', 'E9fZoxxVIAIU2V8.jpg', 'Bến Tre', 1),
-(17, 'dat01685170741', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt Huỳnh', 'dathuynhyl91@gmail.com', '104567.jpg', 'Mỏ Cày Nam', 1);
+(17, 'dat01685170741', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt Huỳnh', 'dathuynhyl91@gmail.com', '104567.jpg', 'Mỏ Cày Nam', 1),
+(19, 'ngocmanh', 'c8837b23ff8aaa8a2dde915473ce0991', 'Ngoc Manh', 'manhpham170900@gmail.com', 'z2435467908573_a5c2ec55bb543b13ea2f630249977d19.jp', 'thanh pho thu duc', 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
