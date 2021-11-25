@@ -14,15 +14,15 @@
             echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
             exit();
         }
-        $result = $mysqli->query("SELECT * FROM contacts WHERE id=$ID");
+        $result = $mysqli->query("SELECT * FROM comments WHERE id=$ID");
         $row = $result->fetch_assoc();
-        if ($mysqli->query("DELETE FROM contacts WHERE id=$ID")) {
+        if ($mysqli->query("DELETE FROM comments WHERE id=$ID")) {
             echo "<script> alert('Success!')</script>";
         }
         else {
             echo "<script> alert('",$ID,"')</script>";
         }
-        header("location:./feedback.php");
+        header("location:./baiviet.php");
     ?>
 </body>
 </html>

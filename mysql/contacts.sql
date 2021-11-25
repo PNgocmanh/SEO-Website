@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2021 lúc 03:58 PM
+-- Thời gian đã tạo: Th10 25, 2021 lúc 06:11 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -43,9 +43,7 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`id`, `name`, `email`, `sdt`, `diachi`, `chude`, `noidung`) VALUES
 (1, 'Phạm Ngọc Mạnh', 'manhpham170900@gmail.com', 971667308, 'dong nai', 'Cảm ơn', 'Cảm ơn đã ủng hộ'),
-(4, 'Mạnh', 'manhpham170900@gmail.com', 971667308, 'dong nai', 'Cảm ơn', 'sdjhgfd'),
 (6, 'sinhvien', 'manh.pham1709@hcmut.edu.com', 971667308, 'Dong Nai', 'Test', 'qeirweofhwhfidhfafdsfsvscmvnmcnvmz,nv,zxmnv,.zvnjhfieohrowierhfjkfjdnbfdnfbdsanmfbsmdfbdmsnbfnjfkjaffsdmnfbdnsmdkjhgjdhgk'),
-(7, 'sinhvien', 'manh.pham1709@hcmut.edu.com', 971667308, 'Dong Nai', 'Test', 'qeirweofhwhfidhfafdsfsvscmvnmcnvmz,nv,zxmnv,.zvnjhfieohrowierhfjkfjdnbfdnfbdsanmfbsmdfbdmsnbfnjfkjaffsdmnfbdnsmdkjhgjdhgkqeirweofhwhfidhfafdsfsvscmvnmcnvmz,nv,zxmnv,.zvnjhfieohrowierhfjkfjdnbfdnfbdsanmfbsmdfbdmsnbfnjfkjaffsdmnfbdnsmdkjhgjdhgk'),
 (8, 'Phạm Ngọc Mạnh', 'manhpham170900@gmail.com', 971667308, 'dong nai', 'Cảm ơn', 'ahhgw'),
 (9, 'Phạm Ngọc Mạnh', 'manhpham170900@gmail.com', 971667308, 'dong nai', 'qưt', 'fdsg1g');
 

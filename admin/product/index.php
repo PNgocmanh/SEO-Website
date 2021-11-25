@@ -68,10 +68,10 @@ https://templatemo.com/tm-561-purple-buzz
                     <a class="nav-link" href="#"><i class='bx bx-search bx-sm bx-tada-hover text-primary'></i></a>
                     <?php
                         if (isset($_SESSION['user'])) {
-                            echo "<a class='nav-link' href='../logout.php'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                            echo "<a class='nav-link' href='../info'><img class='recent-work-img card-img' src='../assets/img/user/admin.jpg' alt='Card image' style='width: 25px; height:25px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;'></a>";
                         }
                         else {
-                            echo "<a class='nav-link' href='./'>Đăng nhập</a>";
+                            echo "<a class='nav-link' href='../'>Đăng nhập</a>";
                         }
                     ?>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 25, 2021 lúc 04:24 PM
+-- Thời gian đã tạo: Th10 25, 2021 lúc 06:11 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -40,8 +40,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `username`, `noidung`, `image`, `time`) VALUES
-(26, 'ngocmanh', 'Mạnh', 'z2435467908573_a5c2ec55bb543b13ea2f630249977d19.jpg', '00:00:00'),
-(27, 'tieumem', 'hello', 'dalat4.jpg', '00:00:00');
+(26, 'ngocmanh', 'Mạnh', 'z2435467908573_a5c2ec55bb543b13ea2f630249977d19.jpg', '00:00:00');
 
 --
 -- Chỉ mục cho các bảng đã đổ

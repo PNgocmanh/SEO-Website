@@ -64,10 +64,10 @@
                     <a class="nav-link" href="#"><i class='bx bx-search bx-sm bx-tada-hover text-primary'></i></a>
                     <?php
                         if (isset($_SESSION['user'])) {
-                            echo "<a class='nav-link' href='logout.php'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                            echo "<a class='nav-link' href='../info'><img class='recent-work-img card-img' src='../assets/img/user/admin.jpg' alt='Card image' style='width: 25px; height:25px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;'></a>";
                         }
                         else {
-                            echo "<a class='nav-link' href='./'>Đăng nhập</a>";
+                            echo "<a class='nav-link' href='../'>Đăng nhập</a>";
                         }
                     ?>
                 </div>
@@ -106,7 +106,7 @@
                                     <td><?php echo $row['diachi']; ?></td>
                                     <td><?php echo $row['chude']; ?></td>
                                     <td>
-                                        <button data-id_xoa="<?php echo $row['id']; ?>" class="btn btn-danger text-light del-fb" id="del-fb" name="del-fb">Delete</button>
+                                        <a href="del_fb.php?ID=<?=$row['id']?>" class="text-decoration-none text-secondary btn btn-danger text-light">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -133,27 +133,7 @@
     <script src="../assets/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="../assets/js/custom.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            // xoa record
-            $(document).on('click', '.del-fb', function(){
-                option = confirm('Bạn có muốn xoá record này không?')
-                if(!option) {
-                    return;
-                }
-                var id = $(this).data('id_xoa');
-                $.ajax({
-                        url: "../admin/del_fb.php",
-                        method: "POST",
-                        data: {id:id},
-                        success: function(data){
-                            alert("Xóa thành công!");
-                            window.open('../admin/feedback.php', '_self');
-                        }
-                });
-            });
-        });
-    </script>
+    
 </body>
 
 </html>

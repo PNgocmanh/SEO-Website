@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 24, 2021 lúc 07:37 PM
+-- Thời gian đã tạo: Th10 25, 2021 lúc 06:12 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -43,13 +43,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `username`, `password`, `ho_ten`, `email`, `anh`, `lien_he`, `quyen`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'admin@gmail.com', NULL, 'Việt Nam', 0),
+(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin', 'admin@gmail.com', 'admin.jpg', 'Việt Nam', 0),
 (3, 'dathuynh', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt 12345', 'dathuynhyl91@gmail.com', NULL, 'Việt Nam 123', 1),
 (6, 'dat1234', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt ABC', 'dat01685170741@gmail.com', NULL, 'TP. Hồ Chí Minh', 1),
 (7, 'abcabc', 'e10adc3949ba59abbe56e057f20f883e', 'aaaaaa', 'dat1234@gmail.com', NULL, 'Vũng Tàu', 1),
 (16, 'dathuynhyl91', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt Huỳnh', 'dathuynhyl91@gmail.com', 'E9fZoxxVIAIU2V8.jpg', 'Bến Tre', 1),
-(17, 'dat01685170741', '4c45a38dfd23d60c2b4f47c8d23ed8f0', 'Đạt Huỳnh', 'dathuynhyl91@gmail.com', '104567.jpg', 'Mỏ Cày Nam', 1),
-(20, 'ngocmanh', '4297f44b13955235245b2497399d7a93', 'Ngoc Manh', 'manhpham170900@gmail.com', 'z2435467908573_a5c2ec55bb543b13ea2f630249977d19.jpg', 'thanh pho thu duc', 1);
+(20, 'ngocmanh', '4297f44b13955235245b2497399d7a93', 'Ngoc Manh', 'manhpham170900@gmail.com', 'z2435467908573_a5c2ec55bb543b13ea2f630249977d19.jpg', 'thanh pho thu duc', 1),
+(21, 'tieumem', 'c8837b23ff8aaa8a2dde915473ce0991', 'Ngoc Manh', 'manhpham170900@gmail.com', 'dalat4.jpg', 'thanh pho thu duc', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -69,7 +69,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

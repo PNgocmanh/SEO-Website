@@ -60,10 +60,10 @@
                     <a class="nav-link" href="#"><i class='bx bx-search bx-sm bx-tada-hover text-primary'></i></a>
                     <?php
                         if (isset($_SESSION['user'])) {
-                            echo "<a class='nav-link' href='../logout.php'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                            echo "<a class='nav-link' href='../info'><img class='recent-work-img card-img' src='../assets/img/user/admin.jpg' alt='Card image' style='width: 25px; height:25px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;'></a>";
                         }
                         else {
-                            echo "<a class='nav-link' href='./'>Đăng nhập</a>";
+                            echo "<a class='nav-link' href='../'>Đăng nhập</a>";
                         }
                     ?>
                 </div>
@@ -110,7 +110,7 @@
         <div class="row justify-content-center pb-4">
             <div class="col-lg-8">
                 <div id="templatemo-slide-link-target" class="card mb-3">
-                    <img class="img-fluid border rounded" src="./assets/img/work-slide-04.jpg" alt="Card image cap">
+                    <img class="img-fluid border rounded" src="../assets/img/work-slide-04.jpg" alt="Card image cap">
                 </div>
                 <div class="worksingle-slide-footer row">
 
@@ -131,28 +131,28 @@
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-06-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-06.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-06-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-05.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-05-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-05.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-05-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-04.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-04-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-04.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-04-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-03-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-03.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-03-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-01-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-01.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-01-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                 </div>
@@ -330,7 +330,7 @@
                                                 <p class="text-muted light-300"><?php echo $row1['time'] ?></p>
                                             </div>
                                             <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
-                                            <a href="#" class="text-decoration-none text-secondary"><i class='bx me-2'></i>Delete</a>   
+                                            <a href="del_cmt.php?ID=<?=$row1['id']?>" class="text-decoration-none text-secondary"><i class='bx me-2'></i>Delete</a>   
                                         </div>
                                         <div class="footer">
                                             <div class="card-body border ms-3 light-300">
