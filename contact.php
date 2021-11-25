@@ -1,3 +1,40 @@
+<?php
+    $conn = mysqli_connect('localhost', 'root', '', 'seo-website');
+
+    if(isset($_POST['send-feedback'])){
+        $check = true;
+
+		$name = $_POST['name'];
+        if (strlen($name)<2 || strlen($name)>40) {
+            echo "<script> alert('Chỉ chấp nhận 2-40 kí tự!')</script>";
+            $check = false;
+        }
+        $email = $_POST['email'];
+        if (!preg_match ("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+\.[A-Za-z]{2,6}$/", $email)) {
+            echo "<script> alert('Sai định dạng email!')</script>";
+            $check = false;
+        }
+        $sdt = $_POST['sdt'];
+
+        $diachi = $_POST['diachi'];
+
+        $chude = $_POST['chude'];
+        if (strlen($chude)<0) {
+            echo "<script> alert('Điền chủ đề!')</script>";
+            $check = false;
+        }
+        $noidung = $_POST['noidung'];
+
+        if($check){
+            $result = mysqli_query($conn, "INSERT INTO contacts (name, email, sdt, diachi, chude, noidung) VALUES ('$name', '$email', '$sdt', '$diachi', '$chude', '$noidung')");
+            echo "<script>alert('Gửi phản hồi thành công!')</script>";
+		    header('location: ./contact.php');
+        }
+
+		
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +53,7 @@
     <link rel="stylesheet" href="assets/css/templatemo.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
-<!--
-    
-TemplateMo 561 Purple Buzz
 
-https://templatemo.com/tm-561-purple-buzz
-
--->
 </head>
 
 <body>
@@ -113,66 +144,62 @@ https://templatemo.com/tm-561-purple-buzz
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingname" name="inputname" placeholder="Họ và Tên" required>
+                            <input type="text" class="form-control form-control-lg light-300" id="name" name="name" placeholder="Họ và Tên" required>
                             <label for="floatingname light-300">Họ và Tên</label>
                         </div>
                     </div><!-- End Input Name -->
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingemail" name="inputemail" placeholder="Email" required>
+                            <input type="text" class="form-control form-control-lg light-300" id="email" name="email" placeholder="Email" required>
                             <label for="floatingemail light-300">Email</label>
                         </div>
                     </div><!-- End Input Email -->
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingphone" name="inputphone" placeholder="Số điện thoại" required>
+                            <input type="text" class="form-control form-control-lg light-300" id="sdt" name="sdt" placeholder="Số điện thoại" required>
                             <label for="floatingphone light-300">Số điện thoại</label>
                         </div>
                     </div><!-- End Input Phone -->
 
                     <div class="col-lg-6 mb-4">
                         <div class="form-floating">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingcompany" name="inputcompany" placeholder="Địa chỉ" required>
+                            <input type="text" class="form-control form-control-lg light-300" id="diachi" name="diachi" placeholder="Địa chỉ" required>
                             <label for="floatingcompany light-300">Địa chỉ</label>
                         </div>
                     </div><!-- End Input Company Name -->
 
                     <div class="col-12">
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control form-control-lg light-300" id="floatingsubject" name="inputsubject" placeholder="Chủ đề">
+                            <input type="text" class="form-control form-control-lg light-300" id="chude" name="chude" placeholder="Chủ đề">
                             <label for="floatingsubject light-300">Chủ đề</label>
                         </div>
                     </div><!-- End Input Subject -->
 
                     <div class="col-12">
                         <div class="form-floating mb-3">
-                            <textarea class="form-control light-300" rows="8" placeholder="Tin nhắn" id="floatingtextarea" required></textarea>
+                            <textarea class="form-control light-300" rows="8" placeholder="Tin nhắn" id="noidung" name="noidung" required></textarea>
                             <label for="floatingtextarea light-300">Nội dung</label>
                         </div>
                     </div><!-- End Textarea Message -->
 
                     <div class="col-md-12 col-12 m-auto text-end">
-                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Gửi phản hồi</button>
+                        <button type="submit" name="send-feedback" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Gửi phản hồi</button>
                     </div>
 
                 </form>
             </div>
             <!-- End Contact Form -->
-
-
         </div>
     </section>
     <!-- End Contact -->
-
 
     <!-- Start Footer -->
     <?php
         include("./footer.php");    
     ?>
     <!-- End Footer -->
-
 
     <!-- Bootstrap -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Purple Buzz - Work Detail Page</title>
+    <title>work</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
@@ -256,15 +256,59 @@ https://templatemo.com/tm-561-purple-buzz
         <!-- Start Comment -->
         <div class="row justify-content-center">
             <div class="worksingle-comment-heading col-8 m-auto pb-3">
-                <h4 class="h5">Comments</h4>
+                <h4 class="h5">Bình Luận</h4>
             </div>
         </div>
+        <?php
+            if (isset($_SESSION['user'])) {
+                $conn = mysqli_connect('localhost', 'root', '', 'seo-website'); 
+                
+                $name = $row['username'];
+                $image = $row['anh'];
+                if(isset($_POST['send-comment'])){
+                    $noidung = $_POST['noidung'];
+                    $result1 = mysqli_query($conn, "INSERT INTO comments (username, noidung) VALUES ('$name', '$noidung')");
+                    //header('location: ../work-single.php');
+                }
+                $sql = "SELECT * FROM comments";
+                $query = mysqli_query($conn, $sql);
+                $sql = "SELECT * FROM comments";
+                $query = mysqli_query($conn, $sql);
+                while($row1=mysqli_fetch_assoc($query)){
+                    ?>
+                        <div class="row pb-4">
+                            <div class="worksingle-comment-body col-md-8 m-auto">
+                                <div class="d-flex">
+                                    <div>
+                                        <img class="rounded-circle" style="width: 50px;" src="./assets/img/user/<?php echo $row['anh']; ?>">
+                                    </div>
+                                    <div class="comment-body">
+                                        <div class="comment-header d-flex justify-content-between ms-3">
+                                            <div class="header text-start">
+                                                <h5 class="h6"><?php echo $row1['username'] ?></h5>
+                                                <p class="text-muted light-300"><?php echo $row1['time'] ?></p>
+                                            </div>
+                                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                                        </div>
+                                        <div class="footer">
+                                            <div class="card-body border ms-3 light-300">
+                                                <?php echo $row1['noidung']; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                }
+            }  
+        ?>
 
         <div class="row pb-4">
             <div class="worksingle-comment-body col-md-8 m-auto">
                 <div class="d-flex">
                     <div>
-                        <img class="rounded-circle" src="./assets/img/team-05.jpg" style="width: 50px;">
+                        <img class="rounded-circle" src="./assets/img/team-01.jpg" style="width: 50px;">
                     </div>
                     <div class="comment-body">
                         <div class="comment-header d-flex justify-content-between ms-3">
@@ -284,114 +328,22 @@ https://templatemo.com/tm-561-purple-buzz
                     </div>
                 </div>
             </div>
-        </div><!-- End Comment -->
+        </div>
 
-
-        <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex">
-                    <div>
-                        <img class="rounded-circle" src="./assets/img/team-01.jpg" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Jane Doe</h5>
-                                <p class="text-muted light-300">5 mins ago</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Comment -->
-
-
-        <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex ml-4">
-                    <div>
-                        <img class="rounded-circle" src="./assets/img/team-05.jpg" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">John Doe</h5>
-                                <p class="text-muted light-300">15 mins ago</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Comment -->
-
-
-        <div class="row pb-4">
-            <div class="col-lg-8 m-auto">
-                <div class="d-flex ml-5">
-                    <div>
-                        <img class="rounded-circle" src="./assets/img/team-01.jpg" style="width: 50px;">
-                    </div>
-                    <div class="comment-body">
-                        <div class="comment-header d-flex justify-content-between ms-3">
-                            <div class="header text-start">
-                                <h5 class="h6">Jane Doe</h5>
-                                <p class="text-muted light-300">16 mins ago</p>
-                            </div>
-                            <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
-                        </div>
-                        <div class="footer">
-                            <div class="card-body border ms-3 light-300">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Comment -->
-
-
+        <!--Viết bình luận-->
         <div class="row pb-4">
             <div class="worksingle-comment-footer col-lg-8 m-auto">
-                <h4 class="h5">Leave Comment</h4>
-                <form class="col-md-12 m-auto" method="POST" action="#" role="form">
+                <!-- <h4 class="h5">Leave Comment</h4> -->
+                <form class="col-md-12 m-auto" method="POST" action="#" role="form" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Your Comment</label>
-                        <textarea class="form-control form-control-lg light-300" id="inputmessage" name="inputmessage" placeholder="Your Comment" rows="5"></textarea>
-                    </div>
-
-                    <div class="row py-4">
-                        <div class="col-lg-6">
-                            <label class="pb-2 light-300" for="inputname">Name</label>
-                            <input type="text" class="form-control form-control-lg light-300" id="inputname" name="inputname" placeholder="Name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputemail">Email</label>
-                            <input type="email" class="form-control form-control-lg light-300" id="inputemail" name="inputemail" placeholder="Email">
-                        </div>
+                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="inputmessage">Bình luận của bạn</label>
+                        <textarea class="form-control form-control-lg light-300" id="noidung" name="noidung" placeholder="Viết bình luận" rows="5"></textarea>
                     </div>
 
                     <div class="form-row pt-2">
                         <div class="col-md-12 col-10 text-end">
-                            <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Send Message</button>
+                            <button type="submit" name="send-comment" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">Gửi Bình Luận</button>
                         </div>
                     </div>
                 </form>

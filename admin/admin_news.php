@@ -11,17 +11,17 @@
     <title>ADMIN</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="../../assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="../../assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="../assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="../../assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
 </head>
 
 <body>
@@ -41,10 +41,10 @@
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="./">Khách hàng</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin">Khách hàng</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../news">Tin Tức</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin/admin_news.php">Tin Tức</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="../product">Sản phẩm</a>
@@ -53,7 +53,7 @@
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.php">Bảng Giá</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="contact.php">Liên hệ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin/feedback.php">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -75,74 +75,43 @@
 
     <!-- Start Our Work -->
     <section class="container py-5">
-        <!--
-        <div class="row justify-content-center my-5">
-            <div class="filter-btns shadow-md rounded-pill text-center col-auto">
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4 active" data-filter=".project" href="#">All</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".business" href="#">Business</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".marketing" href="#">Marketing</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".social" href="#">Social Media</a>
-                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic" href="#">Graphic</a>
-            </div>
-        </div>
-        -->
-
-        
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3 pb-4">Tất cả tin tức</h1>
         <div class="row projects gx-lg-5">
-
-            <!---->
             <?php
                 $conn = mysqli_connect('localhost', 'root', '', 'seo-website');
-
                 $sql = "SELECT * FROM news";
-                $query = mysqli_query($conn, $sql);
-        
+                $query = mysqli_query($conn, $sql);        
                 while($row = mysqli_fetch_assoc($query)){
                 ?>       
-                    <a href="<?php echo $row['source']; ?>" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business">
+                    <div style="margin-bottom: 50px;" class="col-sm-6 col-lg-4 text-decoration-none project marketing social business">
                         <div class="service-work overflow-hidden card mb-5 mx-5 m-sm-0">
-                            <img class="card-img-top" src="./assets/img/<?php echo $row['image']; ?>" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title light-300 text-dark"><?php echo $row['name']; ?></h5>
-                                <p class="card-text light-300 text-dark">
-                                    <?php
-                                        echo $row['description'];
-                                    ?>
-                                </p>
-                                <span class="text-decoration-none text-primary light-300">
-                                    Read more <i class='bx bxs-hand-right ms-1'></i>
-                                </span>
-                            </div>
+                            <a href="../<?php echo $row['source']; ?>" style="text-decoration: none;">
+                                <img class="card-img-top" src="../assets/img/<?php echo $row['image']; ?>" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title light-300 text-dark"><?php echo $row['name']; ?></h5>
+                                    <p class="card-text light-300 text-dark">
+                                        <?php
+                                            echo $row['description'];
+                                        ?>
+                                    </p>
+                                    <span class="text-decoration-none text-primary light-300">
+                                        Read more <i class='bx bxs-hand-right ms-1'></i> 
+                                    </span>
+                                </div>
+                            </a>
+                            <button type="submit" class="btn btn-secondary text-light ">Edit</button>
+                            <button type="submit" class="btn btn-danger text-light ">Delete</button>
+                            
                         </div>
-                    </a>
+                    </div>
                 <?php
                 }
             ?>
         </div>
         
-        <div class="row">
-            <div class="btn-toolbar justify-content-center pb-4" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-secondary text-white">Trang trước</button>
-                </div>
-                <div class="btn-group me-2" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-light">1</button>
-                </div>
-                <div class="btn-group me-2" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-secondary text-white">2</button>
-                </div>
-                <div class="btn-group me-2" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-light">3</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="Third group">
-                    <button type="button" class="btn btn-secondary text-white">Trang sau</button>
-                </div>
-            </div>
+        <!--Admin-->
+        <a href="../component/add-news.php" class="btn btn-primary">Add New</a>
 
-            <!--Admin-->
-            <a href="./component/add-news.php" class="btn btn-primary">Add New</a>
-    
-        </div>
     </section>
     <!-- End Our Work -->
 
@@ -162,18 +131,18 @@
                 <div class="col-lg-6 offset-lg-1 align-left">
                     <div class="row">
                         <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-1-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-1.jpg">
+                            <img class="img-fluid" src="../assets/img/feature-work-1.jpg">
                         </a>
                         <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-2-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-2.jpg">
+                            <img class="img-fluid" src="../assets/img/feature-work-2.jpg">
                         </a>
                     </div>
                     <div class="row pt-4">
                         <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-3-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-3.jpg">
+                            <img class="img-fluid" src="../assets/img/feature-work-3.jpg">
                         </a>
                         <a class="col" data-type="image" data-fslightbox="gallery" href="./assets/img/feature-work-4-large.jpg">
-                            <img class="img-fluid" src="./assets/img/feature-work-4.jpg">
+                            <img class="img-fluid" src="../assets/img/feature-work-4.jpg">
                         </a>
                     </div>
                 </div>
