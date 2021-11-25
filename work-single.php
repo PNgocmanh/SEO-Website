@@ -267,7 +267,7 @@ https://templatemo.com/tm-561-purple-buzz
                 $image = $row['anh'];
                 if(isset($_POST['send-comment'])){
                     $noidung = $_POST['noidung'];
-                    $result1 = mysqli_query($conn, "INSERT INTO comments (username, noidung) VALUES ('$name', '$noidung')");
+                    $result1 = mysqli_query($conn, "INSERT INTO comments (username, noidung, image) VALUES ('$name', '$noidung', '$image')");
                     //header('location: ../work-single.php');
                 }
                 $sql = "SELECT * FROM comments";
@@ -280,7 +280,7 @@ https://templatemo.com/tm-561-purple-buzz
                             <div class="worksingle-comment-body col-md-8 m-auto">
                                 <div class="d-flex">
                                     <div>
-                                        <img class="rounded-circle" style="width: 50px;" src="./assets/img/user/<?php echo $row['anh']; ?>">
+                                        <img class="rounded-circle" style="width: 50px;" src="./assets/img/user/<?php echo $row1['image']; ?>">
                                     </div>
                                     <div class="comment-body">
                                         <div class="comment-header d-flex justify-content-between ms-3">
