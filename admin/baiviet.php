@@ -1,28 +1,75 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("location:../");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>work</title>
+<title>work</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Load Require CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="../assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="../assets/css/templatemo.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/custom.css">
 </head>
 
 <body>
     <!-- Header -->
-    <?php
-        include("./header.php");
-    ?>
+    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand h1" href="./">
+                <i class='bx bx-buildings bx-sm text-dark'></i>
+                <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+                <div class="flex-fill mx-xl-5 mb-2">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin">Khách hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin/admin_news.php">Tin Tức</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../product">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="pricing.php">Bảng Giá</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../admin/feedback.php">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-link" href="#"><i class='bx bx-search bx-sm bx-tada-hover text-primary'></i></a>
+                    <?php
+                        if (isset($_SESSION['user'])) {
+                            echo "<a class='nav-link' href='../logout.php'><i class='bx bx-user-circle bx-sm text-primary'></i></a>";
+                        }
+                        else {
+                            echo "<a class='nav-link' href='./'>Đăng nhập</a>";
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </nav>
     <!-- Close Header -->
 
 
@@ -116,28 +163,28 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-01-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-01.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-01-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-03-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-03.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-03-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-02.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-02-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-02.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-02-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-01-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-01.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-01-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-06-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-06.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-06-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                 </div>
@@ -148,28 +195,28 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-01-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-01.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-01-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-03.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-03-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-03.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-03-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-02.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-02-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-02.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-02-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-01.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-01-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-01.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-01-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                     <div class="col">
-                                        <a class="templatemo-slide-link" href="./assets/img/work-slide-06.jpg">
-                                            <img class="img-fluid border rounded" src="./assets/img/work-slide-06-small.jpg" alt="Product Image">
+                                        <a class="templatemo-slide-link" href="../assets/img/work-slide-06.jpg">
+                                            <img class="img-fluid border rounded" src="../assets/img/work-slide-06-small.jpg" alt="Product Image">
                                         </a>
                                     </div>
                                 </div>
@@ -255,7 +302,10 @@
         <?php
             if (isset($_SESSION['user'])) {
                 $conn = mysqli_connect('localhost', 'root', '', 'seo-website'); 
-                
+                $username = $_SESSION['user'];
+                $result = mysqli_query($conn,"SELECT * FROM user");
+                //$result = $mysqli->query("SELECT * FROM user WHERE username='$username'");
+                $row = $result->fetch_assoc();
                 $name = $row['username'];
                 $image = $row['anh'];
                 if(isset($_POST['send-comment'])){
@@ -271,7 +321,7 @@
                             <div class="worksingle-comment-body col-md-8 m-auto">
                                 <div class="d-flex">
                                     <div>
-                                        <img class="rounded-circle" style="width: 50px;" src="./assets/img/user/<?php echo $row1['image']; ?>">
+                                        <img class="rounded-circle" style="width: 50px;" src="../assets/img/user/<?php echo $row1['image']; ?>">
                                     </div>
                                     <div class="comment-body">
                                         <div class="comment-header d-flex justify-content-between ms-3">
@@ -280,13 +330,14 @@
                                                 <p class="text-muted light-300"><?php echo $row1['time'] ?></p>
                                             </div>
                                             <a href="#" class="text-decoration-none text-secondary"><i class='bx bxs-share me-2'></i>Reply</a>
+                                            <a href="#" class="text-decoration-none text-secondary"><i class='bx me-2'></i>Delete</a>   
                                         </div>
                                         <div class="footer">
                                             <div class="card-body border ms-3 light-300">
                                                 <?php echo $row1['noidung']; ?>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div>                                        
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -330,7 +381,7 @@
 
                         <div class="col-sm-6 col-lg-4 mb-5">
                             <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="./assets/img/related-post-01.jpg" alt="Card image cap">
+                                <img class="related-img card-img-top" src="../assets/img/related-post-01.jpg" alt="Card image cap">
                                 <div class="related-body card-body p-4">
                                     <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Digital Marketing</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
@@ -348,7 +399,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-4 mb-5">
                             <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="./assets/img/related-post-02.jpg" alt="Card image cap">
+                                <img class="related-img card-img-top" src="../assets/img/related-post-02.jpg" alt="Card image cap">
                                 <div class="related-body card-body p-4">
                                     <h5 class="card-title h6 m-0 semi-bold-600 text-dark">App Development</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
@@ -366,7 +417,7 @@
                         </div>
                         <div class="col-sm-6 col-lg-4 mb-5">
                             <a href="#" class="related-content card text-decoration-none overflow-hidden h-100">
-                                <img class="related-img card-img-top" src="./assets/img/related-post-03.jpg" alt="Card image cap">
+                                <img class="related-img card-img-top" src="../assets/img/related-post-03.jpg" alt="Card image cap">
                                 <div class="related-body card-body p-4">
                                     <h5 class="card-title h6 m-0 semi-bold-600 text-dark">Digital Marketing</h5>
                                     <p class="card-text pt-2 mb-1 light-300 text-dark">
@@ -392,7 +443,7 @@
 
 <!-- Start Footer -->
 <?php
-        include("./footer.php");    
+        include("../footer.php");    
     ?>
     <!-- End Footer -->
 
