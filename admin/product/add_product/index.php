@@ -55,6 +55,9 @@
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../comment/">Bình luận</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../comment/">Bình luận</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../news/">Tin tức</a>
                         </li>
                     </ul>

@@ -183,7 +183,7 @@
             <div class="row py-4">
 
                 <div class="col-lg-4 col-12 align-left">
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="../">
                         <i class='bx bx-music bx-sm text-light'></i>
                         <span class="text-light h5">Board Game</span> <span class="text-light h5 semi-bold-600">TMĐ</span>
                     </a>

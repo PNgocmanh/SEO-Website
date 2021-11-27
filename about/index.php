@@ -1,13 +1,5 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user'])) {
-        header("location:../");
-        exit;
-    }
-    if ($_SESSION['user']==='admin') {
-        header("location:../");
-        exit;
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +25,7 @@
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="./">
+            <a class="navbar-brand h1" href="../">
                 <i class='bx bx-music bx-sm text-dark'></i>
                 <span class="text-dark h4">Board Game</span> <span class="text-primary h4">TMĐ</span>
             </a>
@@ -65,7 +57,7 @@
                     <a class="nav-link" href="../cart/"><i class='bx bx-cart bx-sm text-primary'></i></a>
                     <?php
                         if (isset($_SESSION['user'])) {
-                            $mysqli = new mysqli("localhost","root","","seo-website");
+                            $mysqli = new mysqli("localhost","root","","mydb");
                             if ($mysqli -> connect_error) {
                                 echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
                                 exit();
@@ -240,9 +232,8 @@
     <footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
-
                 <div class="col-lg-4 col-12 align-left">
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="../">
                         <i class='bx bx-music bx-sm text-light'></i>
                         <span class="text-light h5">Board Game</span> <span class="text-light h5 semi-bold-600">TMĐ</span>
                     </a>
@@ -336,11 +327,11 @@
 
 
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- Templatemo -->
-    <script src="assets/js/templatemo.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/custom.js"></script>
 
 </body>
 

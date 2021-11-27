@@ -2,16 +2,18 @@
     session_start();
     if (!isset($_SESSION['user'])) {
         header("location:../");
+        exit;
     }
     if ($_SESSION['user']!=='admin') {
         header("location:../");
+        exit;
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Feedback</title>
+    <title>Bình Luận</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="../../assets/img/apple-icon.png">
@@ -61,6 +63,8 @@
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
+                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+                    
                     <?php
                         if (isset($_SESSION['user'])) {
                             $mysqli = new mysqli("localhost","root","","mydb");
@@ -82,58 +86,60 @@
     </nav>
     <!-- Close Header -->
 
-    <section class="container py-5">
-        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3 pb-4">Phản hồi từ khách hàng</h1>
-        <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'mydb');
-            $sql = "SELECT * FROM contacts";
-            $query = mysqli_query($conn, $sql);
-            while($row =  mysqli_fetch_assoc($query)){?>
-                <div class="card" style="margin-bottom: 20px;">
-                    <div class="card-body">
-                        <table class="table table-light">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Tên Khách Hàng</th>
-                                    <th>Email</th>
-                                    <th>SĐT</th>
-                                    <th>Địa Chỉ</th>
-                                    <th>Chủ Đề</th>
-                                    <th width="60px"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><?php echo $row['id']; ?></td>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row['email']; ?></td>
-                                    <td><?php echo $row['sdt']; ?></td>
-                                    <td><?php echo $row['diachi']; ?></td>
-                                    <td><?php echo $row['chude']; ?></td>
-                                    <td>
-                                        <a href="del_fb.php?ID=<?=$row['id']?>" class="text-decoration-none text-secondary btn btn-danger text-light">Delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div><?php echo $row['noidung']; ?></div>
+    <?php
+        extract($_REQUEST);
+        if (!isset($ID)) {
+            $ID = 1;
+        }
+        $mysqli = new mysqli("localhost","root","","mydb");
+        if ($mysqli -> connect_error) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+        }
+        $result = $mysqli->query("SELECT * FROM product WHERE ID=$ID");
+        $row = $result->fetch_assoc();
+    ?>
+    <section class="container overflow-hidden py-5">
+        
+        <div class="row">
+            <div class="col-8 m-auto rounded" style="border: 1px solid #dee2e6;">
+                <h4 class="h5 mt-1 pb-2">Tất cả bình luận</h4>
+                <?php
+                    $result = $mysqli->query("SELECT * FROM comment");
+                    while ($row = $result->fetch_assoc()) {
+                        $user_ID = $row['user_ID'];
+                        $result1 = $mysqli->query("SELECT * FROM user WHERE ID=$user_ID");
+                        $row1 = $result1->fetch_assoc();
+                ?>
+                    <div class="d-flex pb-4">
+                        <div class="pe-2">
+                            <img src="../../assets/img/user/<?=$row1['anh']?>" style="width:50px; height:50px; object-fit: cover; object-position: 50% 50%; border-radius: 50%;" alt="">
+                        </div>
+                        <div>
+                            <div class="d-flex">
+                                <h5 class="h6"><?=$row1['ho_ten']?></h5>
+                                <div class="ms-4"><a href="del_cmt.php?ID=<?=$row['ID']?>">Delete</a></div>
+                            </div>
+                            <p class="text-muted light-300 mb-1"><?=$row['thoi_gian']?></p>
+                            <div class="card-body border light-300"><?=$row['noi_dung']?></div>
+                        </div>
                     </div>
-                </div>
-                                
-            <?php 
-            }
-        ?>
+                <?php
+                    }
+                ?>
+
+            </div>
+        </div>
     </section>
     <!-- End Contact -->
 
     <!-- Bootstrap -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!-- Templatemo -->
-    <script src="../assets/js/templatemo.js"></script>
+    <script src="../../assets/js/templatemo.js"></script>
     <!-- Custom -->
-    <script src="../assets/js/custom.js"></script>
-    
+    <script src="../../assets/js/custom.js"></script>
+
 </body>
 
 </html>
