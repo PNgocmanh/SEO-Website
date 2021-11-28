@@ -34,7 +34,7 @@
     <!-- Header -->
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="../">
+            <a class="navbar-brand h1" href="../../">
                 <i class='bx bx-music bx-sm text-dark'></i>
                 <span class="text-dark h4">Board Game</span> <span class="text-primary h4">TMĐ</span>
             </a>

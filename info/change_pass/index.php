@@ -87,19 +87,19 @@
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../">Trang chủ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../about">Giới thiệu</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../about">Giới thiệu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../news">Tin tức</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../news">Tin tức</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../product/">Sản phẩm</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../product/">Sản phẩm</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../contact">Liên hệ</a>
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="../../contact">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -200,9 +200,8 @@
     <footer class="bg-secondary pt-4">
         <div class="container">
             <div class="row py-4">
-
                 <div class="col-lg-4 col-12 align-left">
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="../../">
                         <i class='bx bx-music bx-sm text-light'></i>
                         <span class="text-light h5">Board Game</span> <span class="text-light h5 semi-bold-600">TMĐ</span>
                     </a>

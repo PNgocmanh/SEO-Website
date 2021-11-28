@@ -46,7 +46,7 @@ https://templatemo.com/tm-561-purple-buzz
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="../../">
                 <i class='bx bx-music bx-sm text-dark'></i>
-                <span class="text-dark h4">Board</span> <span class="text-primary h4">Game</span>
+                <span class="text-dark h4">Board Game</span> <span class="text-primary h4">TMĐ</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -233,10 +233,10 @@ https://templatemo.com/tm-561-purple-buzz
         <div class="container">
             <div class="row py-4">
 
-                <div class="col-lg-3 col-12 align-left">
+                <div class="col-lg-4 col-12 align-left">
                     <a class="navbar-brand" href="../../">
                         <i class='bx bx-music bx-sm text-light'></i>
-                        <span class="text-light h5">XYSP</span> <span class="text-light h5 semi-bold-600">Music Shop</span>
+                        <span class="text-light h5">Board Game</span> <span class="text-light h5 semi-bold-600">TMĐ</span>
                     </a>
                     <p class="text-light my-lg-4 my-2">
                         Các trang liên kết
@@ -270,49 +270,28 @@ https://templatemo.com/tm-561-purple-buzz
                     </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h3 class="h4 pb-lg-3 text-light light-300">Shop của chúng tôi</h2>
+                <div class="col-lg-4 col-md-4 my-sm-0 mt-4">
+                    <h3 class="h4 pb-lg-3 text-light light-300">Shop của chúng tôi</h3>
                         <ul class="list-unstyled text-light light-300">
                             <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="../../">Trang chủ</a>
                             </li>
                             <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../about/">Giới thiệu</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../news/">Tin tức</a>
+                            </li>
+                            <li class="pb-2">
                                 <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/">Sản phẩm</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../sale/">Khuyến mãi</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="../../news/">Tin tức</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="../../contact/">Liên hệ</a>
                             </li>
                         </ul>
                 </div>
 
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Sản phẩm</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=guitar">Guitar</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=piano">Piano</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=organ">Organ</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=ukulele">Ukulele</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=other">Nhạc cụ khác</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="../../product/?loai=phukien">Phụ kiện</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
+                <div class="col-lg-4 col-md-4 my-sm-0 mt-4">
                     <h2 class="h4 pb-lg-3 text-light light-300">Liên hệ với chúng tôi</h2>
                     <ul class="list-unstyled text-light light-300">
                         <li class="pb-2">
@@ -332,12 +311,12 @@ https://templatemo.com/tm-561-purple-buzz
                 <div class="row pt-2">
                     <div class="col-lg-6 col-sm-12">
                         <p class="text-lg-start text-center text-light light-300">
-                            © Copyright 2021 Purple Buzz Company. All Rights Reserved.
+                            © Copyright 2021 Board Game TMĐ Company. All Rights Reserved.
                         </p>
                     </div>
                     <div class="col-lg-6 col-sm-12">
                         <p class="text-lg-end text-center text-light light-300">
-                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>TemplateMo</strong></a>
+                            Designed by <a rel="sponsored" class="text-decoration-none text-light" href="" target="_blank"><strong>TMĐ</strong></a>
                         </p>
                     </div>
                 </div>

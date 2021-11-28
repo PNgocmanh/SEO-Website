@@ -29,7 +29,7 @@
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="../">
                 <i class='bx bx-music bx-sm text-dark'></i>
-                <span class="text-dark h4">Board</span> <span class="text-primary h4">Game</span>
+                <span class="text-dark h4">Board Game</span> <span class="text-primary h4">TMĐ</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -84,8 +84,26 @@
     </nav>
     <!-- Close Header -->
 
+    <?php 
+        if (isset($_POST['submit_search']) && $_POST['search']!=="") {
+            $ten = $_POST['search'];
+            header("location:./?ten_search=$ten");
+        }
+    ?>
+
     <div class="banner-content col-lg-8 col-12 m-lg-auto text-center">
         <h1 class="banner-heading h2 display-3 pb-5 semi-bold-600 typo-space-line-center" style="margin-top: 3%;">Danh sách sản phẩm</h1>
+        <form class="row" action="#" method="post">
+            <div class="col-lg-3"></div>
+            <div class=" col-lg-4">
+                <input type="text" class="rounded-pill form-control form-control-lg light-300" name="search" placeholder="Nhập từ khóa" required>
+        
+            </div>
+            <div class="col-2">
+                <input type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300" name="submit_search" value="Tìm">
+         
+            </div>
+        </form>                     
     </div>
 
     <?php
@@ -95,10 +113,15 @@
             exit();
         }
         else {
-            $result = $mysqli->query("SELECT * FROM product");
+            if (isset($ten_search)) {
+                $result = $mysqli->query("SELECT * FROM product WHERE ten LIKE '%$ten_search%'");
+            }
+            else {
+                $result = $mysqli->query("SELECT * FROM product");
+            }
         }
     ?>
-
+       
     <section class="container overflow-hidden py-5">
         <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
             <?php
