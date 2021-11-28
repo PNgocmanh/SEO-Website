@@ -19,7 +19,7 @@
         $so_luong = $_POST['so_luong'];
         $sql = "INSERT INTO cart(user_ID,product_ID,so_luong) VALUES ('$user_ID','$product_ID',$so_luong)";
         if ($mysqli->query($sql)) {
-            header("location:../");
+            header("location:../../cart");
         }
     }
 ?>
