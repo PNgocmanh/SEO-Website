@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2021 lúc 06:54 PM
+-- Thời gian đã tạo: Th10 29, 2021 lúc 03:21 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -65,7 +65,8 @@ INSERT INTO `comment` (`ID`, `user_ID`, `product_ID`, `noi_dung`, `thoi_gian`) V
 (18, 1, 3, 'chào bạn tôi là admin', '2021-11-26 22:10:28'),
 (20, 16, 2, 'xin chào tôi là Đạt', '2021-11-27 02:48:19'),
 (23, 16, 3, 'sản phẩm chất lượng', '2021-11-27 17:13:37'),
-(24, 16, 13, '10đ', '2021-11-27 17:13:46');
+(24, 16, 13, '10đ', '2021-11-27 17:13:46'),
+(27, 1, 2, 'admin', '2021-11-28 03:54:27');
 
 -- --------------------------------------------------------
 
@@ -113,10 +114,10 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `name`, `description`, `status`, `source`, `image`) VALUES
 (8, 'Góc Review Bang!', 'Review tất tần tật về Bang! phiên bản Việt hóa chính hãng đầ', 1, 'https://boardgame.vn/nv893/review-bang-phien-ban-viet-hoa', 'board game Bang.png'),
 (9, 'Văn hóa Việt vào board game', 'Kể chuyện Việt Nam qua những bộ board game', 1, 'https://tuoitre.vn/ke-chuyen-viet-nam-qua-nhung-bo-board-game-20200213134928259.htm', 'game-hoi-pho-1581576217610607692535.jpg'),
-(12, 'Game Vui Tết 2022', '', 1, 'https://boardgame.vn/nv892/12-board-game-choi-tet', 'board game choi Tết ma sói.jpg'),
+(12, 'Game Vui Tết 2022', ' List game cực vui cho hội bạn, đảm bảo một mùa Tết vui', 1, 'https://boardgame.vn/nv892/12-board-game-choi-tet', 'board game choi Tết ma sói.jpg'),
 (13, 'SPLENDOR', 'Top chiến thuật đỉnh cao không thể bỏ qua', 0, 'https://boardgame.vn/nv877/top-2-game-chien-thuat-dinh-cao-ma-ban-khong-the-bo-qua-splendor-gizmos', '1.jpg'),
-(14, 'Werewolf', 'Hướng dẫn cách chơi ma sói', 1, 'https://hocvienboardgame.vn/huong-dan-board-game-soi-ultimate-chi-tiet-nhat/', 'soiultimate4-768x768.png'),
-(15, 'Luật chơi UNO', NULL, 0, 'https://www.thegioididong.com/game-app/cach-choi-bai-uno-nhung-luat-choi-co-ban-1284714', 'a56c800514c7e279d063e033365b270f.jpg');
+(14, 'Werewolf', 'Hướng dẫn cách chơi ma sói ULTIMATE - ULTIMATE WEREWOLF', 1, 'https://hocvienboardgame.vn/huong-dan-board-game-soi-ultimate-chi-tiet-nhat/', 'soiultimate4-768x768.png'),
+(15, 'Luật chơi UNO', 'Cách chơi bài Uno, luật chơi Uno cơ bản - mẹo chơi dễ thắng', 0, 'https://www.thegioididong.com/game-app/cach-choi-bai-uno-nhung-luat-choi-co-ban-1284714', 'a56c800514c7e279d063e033365b270f.jpg');
 
 -- --------------------------------------------------------
 
@@ -235,13 +236,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `contacts`
